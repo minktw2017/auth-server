@@ -1,0 +1,14 @@
+name: auth-server
+
+services:
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    env_file: ./server/.env
+    ports:
+      - '4004:4004'
+    volumes:
+      - ./server:/app
+      - /app/node_modules
